@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -6,6 +7,11 @@ public class GameController : MonoBehaviour
     public GameObject scoreValue;
     public GameObject gameOverLabel;
     private int score;
+
+    private void Start()
+    {
+        gameOverLabel.SetActive(false);
+    }
 
     public void IncrementScore()
     {
