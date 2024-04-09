@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthController : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class HealthController : MonoBehaviour
     public int currentHealth;
     public GameObject explosion;
     public AudioClip explosionAudioClip;
+    public UnityEvent OnBeforeDestroy;
 
     private AudioSource audioSource;
 
@@ -33,6 +35,8 @@ public class HealthController : MonoBehaviour
             {
                 audioSource.PlayOneShot(explosionAudioClip);
             }
+
+            OnBeforeDestroy?.Invoke();
 
             Destroy(gameObject, 0.5f);
             Destroy(explosionGameObject, 1f);

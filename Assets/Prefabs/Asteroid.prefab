@@ -52,7 +52,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asteroid
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1705999101787402632, guid: ec4c29675987e87429aeec5e4e93fc5f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -71,6 +72,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7642089964585371861, guid: ec4c29675987e87429aeec5e4e93fc5f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4531510665596145809}
+    - targetCorrespondingSourceObject: {fileID: 7642089964585371861, guid: ec4c29675987e87429aeec5e4e93fc5f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3237574969512708400}
   m_SourcePrefab: {fileID: 100100000, guid: ec4c29675987e87429aeec5e4e93fc5f, type: 3}
 --- !u!1 &5414655100797790775 stripped
 GameObject:
@@ -157,6 +161,21 @@ MonoBehaviour:
   currentHealth: 0
   explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   explosionAudioClip: {fileID: 8300000, guid: 529dc08af95041e6baa3461fa3ed947d, type: 3}
+  OnBeforeDestroy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3237574969512708400}
+        m_TargetAssemblyTypeName: AsteroidFragmenter, Assembly-CSharp
+        m_MethodName: Fragment
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &4531510665596145809
 AudioSource:
   m_ObjectHideFlags: 0
@@ -253,3 +272,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3237574969512708400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5414655100797790775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5900b42bffcde4d6e90ef3e5d3aa1cbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidFragment: {fileID: 5414655100797790775}
+  minimumFragments: 2
+  maximumFragments: 8
+  minimumScale: 0.4

@@ -283,7 +283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &374078039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -610,6 +610,9 @@ MonoBehaviour:
   currentHealth: 0
   explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   explosionAudioClip: {fileID: 8300000, guid: 529dc08af95041e6baa3461fa3ed947d, type: 3}
+  OnBeforeDestroy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &807796030 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1557389343739074, guid: 276f86b804eccb3448f2d2c6d1ac0b07, type: 3}
