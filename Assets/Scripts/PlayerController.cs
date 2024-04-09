@@ -10,8 +10,12 @@ public class PlayerController : MonoBehaviour
     public GameObject thruster;
     public float cooldown = 1f;
 
+    public AudioClip thrustAudioClip;
+    public AudioClip fireAudioClip;
+
     private Rigidbody rigidBody;
     private int currentCannon = 0;
+    private AudioSource audioSource;
     private ParticleSystem thrusterParticles;
 
     private float time = 0f;
@@ -24,6 +28,7 @@ public class PlayerController : MonoBehaviour
         _camera = Camera.main;
         colliders = GetComponents<Collider>();
         rigidBody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         thrusterParticles = thruster.GetComponent<ParticleSystem>();
 
         thrusterParticles.Stop();
@@ -53,12 +58,22 @@ public class PlayerController : MonoBehaviour
             Instantiate(laser, laserOriginTransform
                 .TransformPoint(Vector3.forward * 2), transform.rotation);
             time = cooldown;
+
+            audioSource.PlayOneShot(fireAudioClip);
         }
 
         // Player movements
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
+            if (!audioSource.isPlaying || audioSource.clip == fireAudioClip)
+            {
+                audioSource.loop = true;
+                audioSource.clip = thrustAudioClip;
+                audioSource.Play();
+            }
+
             rigidBody.AddForce(transform.forward * (movementSpeed * Time.deltaTime));
+
             if (!thrusterParticles.isPlaying)
             {
                 thrusterParticles.Play();
@@ -67,6 +82,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             thrusterParticles.Stop();
+            if (audioSource.clip == thrustAudioClip)
+            {
+                audioSource.Stop();
+                audioSource.loop = false;
+            }
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
