@@ -7,10 +7,12 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed;
     public GameObject laser;
     public GameObject[] cannons;
+    public GameObject thruster;
     public float cooldown = 1f;
 
     private Rigidbody rigidBody;
     private int currentCannon = 0;
+    private ParticleSystem thrusterParticles;
 
     private float time = 0f;
 
@@ -22,6 +24,9 @@ public class PlayerController : MonoBehaviour
         _camera = Camera.main;
         colliders = GetComponents<Collider>();
         rigidBody = GetComponent<Rigidbody>();
+        thrusterParticles = thruster.GetComponent<ParticleSystem>();
+
+        thrusterParticles.Stop();
     }
 
     private void Update()
@@ -54,6 +59,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             rigidBody.AddForce(transform.forward * (movementSpeed * Time.deltaTime));
+            if (!thrusterParticles.isPlaying)
+            {
+                thrusterParticles.Play();
+            }
+        }
+        else
+        {
+            thrusterParticles.Stop();
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
