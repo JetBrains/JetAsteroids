@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rigidBody;
     private int currentCannon = 0;
-    private AudioSource audioSource;
+    private AudioSource thrustAudioSource;
+    private AudioSource fireAudioSource;
     private ParticleSystem thrusterParticles;
 
     private float time = 0f;
@@ -28,9 +29,12 @@ public class PlayerController : MonoBehaviour
         _camera = Camera.main;
         colliders = GetComponents<Collider>();
         rigidBody = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
-        thrusterParticles = thruster.GetComponent<ParticleSystem>();
 
+        var audioSources = GetComponents<AudioSource>();
+        thrustAudioSource = audioSources[0];
+        fireAudioSource = audioSources[1];
+
+        thrusterParticles = thruster.GetComponent<ParticleSystem>();
         thrusterParticles.Stop();
     }
 
@@ -59,17 +63,17 @@ public class PlayerController : MonoBehaviour
                 .TransformPoint(Vector3.forward * 2), transform.rotation);
             time = cooldown;
 
-            audioSource.PlayOneShot(fireAudioClip);
+            fireAudioSource.PlayOneShot(fireAudioClip);
         }
 
         // Player movements
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            if (!audioSource.isPlaying || audioSource.clip == fireAudioClip)
+            if (!thrustAudioSource.isPlaying)
             {
-                audioSource.loop = true;
-                audioSource.clip = thrustAudioClip;
-                audioSource.Play();
+                thrustAudioSource.loop = true;
+                thrustAudioSource.clip = thrustAudioClip;
+                thrustAudioSource.Play();
             }
 
             rigidBody.AddForce(transform.forward * (movementSpeed * Time.deltaTime));
@@ -82,11 +86,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             thrusterParticles.Stop();
-            if (audioSource.clip == thrustAudioClip)
-            {
-                audioSource.Stop();
-                audioSource.loop = false;
-            }
+            thrustAudioSource.Stop();
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
