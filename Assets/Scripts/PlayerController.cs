@@ -17,14 +17,14 @@ public class PlayerController : MonoBehaviour
     private Collider[] colliders;
     private Camera _camera;
 
-    void Start()
+    private void Start()
     {
         _camera = Camera.main;
         colliders = GetComponents<Collider>();
         rigidBody = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    private void Update()
     {
         // Laser
         if (time > 0f)

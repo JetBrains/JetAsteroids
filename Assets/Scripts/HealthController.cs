@@ -9,7 +9,7 @@ public class HealthController : MonoBehaviour
 
     private bool isExploding = false;
 
-    void Start()
+    private void Start()
     {
         currentHealth = health;
     }

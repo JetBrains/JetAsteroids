@@ -7,12 +7,12 @@ public class AsteroidController : MonoBehaviour
 
     private float currentTime;
 
-    void Start()
+    private void Start()
     {
         GetComponent<Rigidbody>().AddForce(transform.forward * 100f);
     }
 
-    void OnBecameInvisible() => Destroy(gameObject);
+    private void OnBecameInvisible() => Destroy(gameObject);
 
     private void OnCollisionStay(Collision other)
     {
