@@ -28,8 +28,11 @@ public class AsteroidFragmenter : MonoBehaviour
         for (var i = 0; i < numberOfFragments; i++)
         {
             // Create fragment
-            var fractureGameObject = Instantiate(asteroidFragment, new Vector3(asteroidTransformPosition.x, asteroidTransformPosition.y, asteroidTransformPosition.z), Quaternion.Euler(0, 0, 0));
-            fractureGameObject.transform.LookAt(screenCenter);
+            var fractureGameObject = Instantiate(asteroidFragment,new Vector3(asteroidTransformPosition.x, asteroidTransformPosition.y, asteroidTransformPosition.z), Quaternion.Euler(0, 0, 0));
+
+            // Randomize direction
+            fractureGameObject.transform.LookAt(
+                new Vector3(UnityEngine.Random.Range(Screen.width * -1, Screen.width), UnityEngine.Random.Range(Screen.height * -1, Screen.height), 0));
 
             if (fractureGameObject.TryGetComponent<AsteroidController>(out var fractureAsteroidController))
             {
