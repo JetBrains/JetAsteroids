@@ -14,3 +14,4 @@ After opening the project in Unity, make sure to add the following assets from t
 ## Audio
 
 * Sound effects audio files from: http://www.classicgaming.cc/classics/asteroids/sounds
+* Background music: [Sci-Fi and Cyberpunk Music Pack](https://assetstore.unity.com/packages/audio/ambient/sci-fi/free-sci-fi-and-cyberpunk-music-pack-264590)
