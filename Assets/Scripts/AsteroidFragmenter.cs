@@ -31,6 +31,11 @@ public class AsteroidFragmenter : MonoBehaviour
             var fractureGameObject = Instantiate(asteroidFragment, new Vector3(asteroidTransformPosition.x, asteroidTransformPosition.y, asteroidTransformPosition.z), Quaternion.Euler(0, 0, 0));
             fractureGameObject.transform.LookAt(screenCenter);
 
+            if (fractureGameObject.TryGetComponent<AsteroidController>(out var fractureAsteroidController))
+            {
+                fractureAsteroidController.damage = (int)Math.Max(10, fractureAsteroidController.damage / 2f);
+            }
+
             var scale = transform.localScale.x / 2;
             fractureGameObject.transform.localScale = new Vector3(scale, scale, scale);
         }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class LaserController : MonoBehaviour
 {
+    public int damage = 25;
     public float speed;
 
     private void Update()
@@ -17,7 +18,7 @@ public class LaserController : MonoBehaviour
 
         if (other.gameObject.TryGetComponent<HealthController>(out var healthController))
         {
-            healthController.DealDamage(25);
+            healthController.DealDamage(damage);
         }
 
         Destroy(gameObject);
