@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AsteroidController : MonoBehaviour
@@ -18,15 +20,21 @@ public class AsteroidController : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Player")) return;
 
-        if (currentTime < damageCooldown)
+        if (currentTime <= 0f)
         {
-            currentTime += Time.deltaTime;
+            other.gameObject.GetComponent<HealthController>()?.DealDamage(damage);
+            currentTime = damageCooldown;
         }
         else
         {
-            currentTime = 0f;
-
-            other.gameObject.GetComponent<HealthController>()?.DealDamage(damage);
+            currentTime -= Time.deltaTime;
         }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (!other.gameObject.CompareTag("Player")) return;
+
+        currentTime = 0f;
     }
 }
