@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +8,7 @@ public class GameController : MonoBehaviour
     public GameObject scoreValue;
     public GameObject gameOverLabel;
     public Slider healthSlider;
+    public Canvas healthCanvas;
     public GameObject player;
 
     private int score;
@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         gameOverLabel.SetActive(true);
-        healthSlider.gameObject.SetActive(false);
+        healthCanvas.gameObject.SetActive(false);
 
         currentTime = 10f;
     }
