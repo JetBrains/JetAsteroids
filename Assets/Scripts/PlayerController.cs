@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float rotationSpeed;
-    public float movementSpeed;
-    public GameObject laser;
-    public GameObject[] cannons;
-    public GameObject thruster;
-    public float cooldown = 1f;
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private GameObject laser;
+    [SerializeField] private GameObject[] cannons;
+    [SerializeField] private GameObject thruster;
+    [SerializeField] private float cooldown = 1f;
 
-    public AudioClip thrustAudioClip;
-    public AudioClip fireAudioClip;
+    [SerializeField] private AudioClip thrustAudioClip;
+    [SerializeField] private AudioClip fireAudioClip;
 
     private Rigidbody rigidBody;
     private int currentCannon = 0;

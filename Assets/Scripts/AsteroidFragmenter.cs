@@ -1,21 +1,12 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AsteroidFragmenter : MonoBehaviour
 {
-    public GameObject asteroidFragment;
-    public int minimumFragments = 2;
-    public int maximumFragments = 8;
-    public float minimumScale;
-
-    private Vector3 screenCenter;
-
-    private void Start()
-    {
-        screenCenter = Camera.main!.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-    }
+    [SerializeField] private GameObject asteroidFragment;
+    [SerializeField] private int minimumFragments = 2;
+    [SerializeField] private int maximumFragments = 8;
+    [SerializeField] private float minimumScale;
 
     public void Fragment()
     {

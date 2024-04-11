@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
 {
-    public GameObject asteroid;
-    public float spawnInterval = 4f;
-    public float maximumScale = 10f;
-    public float minimumScale = 5f;
+    [SerializeField] private GameObject asteroid;
+    [SerializeField] private float spawnInterval = 4f;
+    [SerializeField] private float maximumScale = 10f;
+    [SerializeField] private float minimumScale = 5f;
 
     private Vector3 screenCenter;
 

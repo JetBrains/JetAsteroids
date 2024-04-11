@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject scoreValue;
-    public GameObject gameOverLabel;
-    public Slider healthSlider;
-    public Canvas healthCanvas;
-    public GameObject player;
+    [SerializeField] private GameObject scoreValue;
+    [SerializeField] private GameObject gameOverLabel;
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private Canvas healthCanvas;
+    [SerializeField] private GameObject player;
 
     private int score;
     private HealthController playerHealthController;

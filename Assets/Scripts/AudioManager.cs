@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource loopAudioSource;
     [SerializeField] private AudioSource musicAudioSource;
 
-    public static AudioManager instance;
+    private static AudioManager instance;
 
     private void Awake()
     {

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class LaserController : MonoBehaviour
 {
-    public int damage = 25;
-    public float speed;
+    [SerializeField] private int damage = 25;
+    [SerializeField] private float speed;
 
     private void Update()
     {

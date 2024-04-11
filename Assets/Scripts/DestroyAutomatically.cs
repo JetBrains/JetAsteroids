@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DestroyAutomatically : MonoBehaviour
 {
-    public float destroyAfter;
+    [SerializeField] private float destroyAfter;
 
     private void Start() => Destroy(gameObject, destroyAfter);
 }

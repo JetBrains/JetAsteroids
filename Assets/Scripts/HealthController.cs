@@ -6,9 +6,9 @@ public class HealthController : MonoBehaviour
 {
     public int health = 100;
     public int currentHealth;
-    public GameObject explosion;
-    public AudioClip explosionAudioClip;
-    public UnityEvent OnBeforeDestroy;
+    [SerializeField] private GameObject explosion;
+    [SerializeField] private AudioClip explosionAudioClip;
+    [SerializeField] private UnityEvent OnBeforeDestroy;
 
     private AudioManager audioManager;
 
