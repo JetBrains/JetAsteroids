@@ -15,8 +15,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rigidBody;
     private int currentCannon = 0;
-    private AudioSource thrustAudioSource;
-    private AudioSource fireAudioSource;
+
+    private AudioManager audioManager;
     private ParticleSystem thrusterParticles;
 
     private float time = 0f;
@@ -30,9 +30,7 @@ public class PlayerController : MonoBehaviour
         colliders = GetComponents<Collider>();
         rigidBody = GetComponent<Rigidbody>();
 
-        var audioSources = GetComponents<AudioSource>();
-        thrustAudioSource = audioSources[0];
-        fireAudioSource = audioSources[1];
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager")?.GetComponent<AudioManager>();
 
         thrusterParticles = thruster.GetComponent<ParticleSystem>();
         thrusterParticles.Stop();
@@ -63,18 +61,13 @@ public class PlayerController : MonoBehaviour
                 .TransformPoint(Vector3.forward * 2), transform.rotation);
             time = cooldown;
 
-            fireAudioSource.PlayOneShot(fireAudioClip);
+            audioManager?.PlaySfx(fireAudioClip);
         }
 
         // Player movements
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            if (!thrustAudioSource.isPlaying)
-            {
-                thrustAudioSource.loop = true;
-                thrustAudioSource.clip = thrustAudioClip;
-                thrustAudioSource.Play();
-            }
+            audioManager?.PlaySfx(thrustAudioClip, true);
 
             rigidBody.AddForce(transform.forward * (movementSpeed * Time.deltaTime));
 
@@ -86,7 +79,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             thrusterParticles.Stop();
-            thrustAudioSource.Stop();
+            audioManager?.StopSfx(thrustAudioClip);
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
@@ -123,6 +116,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
+        audioManager?.StopSfx(thrustAudioClip);
         GameObject.FindWithTag("GameController")?.GetComponent<GameController>()?.GameOver();
     }
 }

@@ -10,14 +10,14 @@ public class HealthController : MonoBehaviour
     public AudioClip explosionAudioClip;
     public UnityEvent OnBeforeDestroy;
 
-    private AudioSource audioSource;
+    private AudioManager audioManager;
 
     private bool isExploding = false;
 
     private void Start()
     {
         currentHealth = health;
-        audioSource = GetComponent<AudioSource>();
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager")?.GetComponent<AudioManager>();
     }
 
     public void DealDamage(int damage)
@@ -31,10 +31,7 @@ public class HealthController : MonoBehaviour
             var explosionGameObject = Instantiate(explosion, transform.position,
                 Quaternion.Euler(0, 0, 0));
 
-            if (audioSource != null)
-            {
-                audioSource.PlayOneShot(explosionAudioClip);
-            }
+            audioManager?.PlaySfx(explosionAudioClip);
 
             OnBeforeDestroy?.Invoke();
 
