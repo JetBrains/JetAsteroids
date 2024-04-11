@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
+  m_sendNavigationEvents: 0
   m_DragThreshold: 10
 --- !u!4 &358633262
 Transform:
@@ -788,7 +788,7 @@ MonoBehaviour:
   currentHealth: 0
   explosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   explosionAudioClip: {fileID: 8300000, guid: 529dc08af95041e6baa3461fa3ed947d, type: 3}
-  OnBeforeDestroy:
+  onBeforeDestroy:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &807796030 stripped

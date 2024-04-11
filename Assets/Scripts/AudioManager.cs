@@ -26,10 +26,13 @@ public class AudioManager : MonoBehaviour
     {
         if (!loop)
         {
+            if (!sfxAudioSource.enabled) return;
+
             sfxAudioSource.PlayOneShot(audioClip);
         }
         else
         {
+            if (!loopAudioSource.enabled) return;
             if (loopAudioSource.isPlaying) return;
 
             loopAudioSource.clip = audioClip;
@@ -40,11 +43,15 @@ public class AudioManager : MonoBehaviour
 
     public void StopSfx(AudioClip audioClip)
     {
-        if (sfxAudioSource.isPlaying && sfxAudioSource.clip == audioClip)
+        if (sfxAudioSource.enabled &&
+            sfxAudioSource.isPlaying &&
+            sfxAudioSource.clip == audioClip)
         {
             sfxAudioSource.Stop();
         }
-        else if (loopAudioSource.isPlaying && loopAudioSource.clip == audioClip)
+        else if (loopAudioSource.enabled &&
+                 loopAudioSource.isPlaying &&
+                 loopAudioSource.clip == audioClip)
         {
             loopAudioSource.Stop();
         }
