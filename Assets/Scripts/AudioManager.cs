@@ -6,13 +6,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource loopAudioSource;
     [SerializeField] private AudioSource musicAudioSource;
 
-    private static AudioManager instance;
+    private static AudioManager _instance;
 
     private void Awake()
     {
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = this;
+            _instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else

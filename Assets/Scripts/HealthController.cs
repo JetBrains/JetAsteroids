@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class HealthController : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class HealthController : MonoBehaviour
     public int currentHealth;
     [SerializeField] private GameObject explosion;
     [SerializeField] private AudioClip explosionAudioClip;
-    [SerializeField] private UnityEvent OnBeforeDestroy;
+    [SerializeField] private UnityEvent onBeforeDestroy;
 
     private AudioManager audioManager;
 
@@ -33,7 +34,7 @@ public class HealthController : MonoBehaviour
 
             audioManager?.PlaySfx(explosionAudioClip);
 
-            OnBeforeDestroy?.Invoke();
+            onBeforeDestroy?.Invoke();
 
             Destroy(gameObject, 0.5f);
             Destroy(explosionGameObject, 1f);

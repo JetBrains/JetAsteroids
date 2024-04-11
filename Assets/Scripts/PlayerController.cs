@@ -22,11 +22,11 @@ public class PlayerController : MonoBehaviour
     private float time = 0f;
 
     private Collider[] colliders;
-    private Camera _camera;
+    private Camera mainCamera;
 
     private void Start()
     {
-        _camera = Camera.main;
+        mainCamera = Camera.main;
         colliders = GetComponents<Collider>();
         rigidBody = GetComponent<Rigidbody>();
 
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
         if (!IsPlayerVisible())
         {
             var playerTransformPosition = transform.position;
-            var screenCenter = _camera.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+            var screenCenter = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0));
             transform.position = new Vector3(screenCenter.x - playerTransformPosition.x, screenCenter.y - playerTransformPosition.y, 0);
         }
     }
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
     {
         var collider = colliders.First(it => it.isTrigger);
 
-        var planes = GeometryUtility.CalculateFrustumPlanes(_camera);
+        var planes = GeometryUtility.CalculateFrustumPlanes(mainCamera);
         return GeometryUtility.TestPlanesAABB(planes, collider.bounds);
     }
 
