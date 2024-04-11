@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 306860575}
   - component: {fileID: 306860576}
+  - component: {fileID: 306860577}
   m_Layer: 0
   m_Name: Audio
   m_TagString: AudioManager
@@ -173,6 +174,18 @@ MonoBehaviour:
   sfxAudioSource: {fileID: 1351936774}
   loopAudioSource: {fileID: 1327781561}
   musicAudioSource: {fileID: 1686635831}
+--- !u!114 &306860577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306860571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a7eec2db2d408097c0c11760ac75de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &358633259
 GameObject:
   m_ObjectHideFlags: 0

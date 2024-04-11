@@ -6,21 +6,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource loopAudioSource;
     [SerializeField] private AudioSource musicAudioSource;
 
-    private static AudioManager _instance;
-
-    private void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
     public void PlaySfx(AudioClip audioClip, bool loop = false)
     {
         if (!loop)
