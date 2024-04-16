@@ -35,10 +35,3 @@ UserSettings/EditorUserSettings.asset
 *.lighting.meta
 
 .DS_Store
-
-# Assets from Unity Asset Store
-Assets/BreakableAsteroids/
-Assets/Spaceship Fighter/
-Assets/StarfieldMaterials/
-Assets/UnityTechnologies/ParticlePack/
-Assets/Free - Sci-Fi and Cyberpunk Music Pack/
