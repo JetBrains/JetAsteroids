@@ -1,3 +1,5 @@
+[![team project](https://jb.gg/badges/team-flat-square.svg)](https://github.com/JetBrains)
+
 # Asteroids Game
 
 Asteroids game built with Unity and JetBrains Rider.
