@@ -1,0 +1,20 @@
+## Unity ##
+* text=auto
+*.cs diff=csharp text
+*.cginc text
+*.shader text
+*.mat merge=unityyamlmerge eol=lf
+*.anim merge=unityyamlmerge eol=lf
+*.unity merge=unityyamlmerge eol=lf
+*.prefab merge=unityyamlmerge eol=lf
+*.physicsMaterial2D merge=unityyamlmerge eol=lf
+*.physicsMaterial merge=unityyamlmerge eol=lf
+*.asset merge=unityyamlmerge eol=lf
+*.meta merge=unityyamlmerge eol=lf
+*.controller merge=unityyamlmerge eol=lf
+Assets/BreakableAsteroids/Asteroids/zasteroids.dae filter=lfs diff=lfs merge=lfs -text
+Assets/BreakableAsteroids/Textures/The[[:space:]]Void[[:space:]]8k.hdr filter=lfs diff=lfs merge=lfs -text
+Assets/Spaceship[[:space:]]Fighter/Textures/Nave_M.tga filter=lfs diff=lfs merge=lfs -text
+Assets/Spaceship[[:space:]]Fighter/Textures/Nave_N.tga filter=lfs diff=lfs merge=lfs -text
+Assets/Spaceship[[:space:]]Fighter/Textures/Nave_D.tga filter=lfs diff=lfs merge=lfs -text
+Assets/Free[[:space:]]-[[:space:]]Sci-Fi[[:space:]]and[[:space:]]Cyberpunk[[:space:]]Music[[:space:]]Pack/01[[:space:]]Ascension.wav filter=lfs diff=lfs merge=lfs -text
